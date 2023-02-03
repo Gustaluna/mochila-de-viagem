@@ -3,8 +3,14 @@ const lista = document.getElementById("lista")
 
 form.addEventListener("submit", (evento) => {
     evento.preventDefault()
+    
+    let nome = evento.target.elements["nome"]
+    let quantidade = evento.target.elements["quantidade"]
 
-    criaElemento(evento.target.elements["nome"]?.value, evento.target.elements["quantidade"]?.value)
+    criaElemento(nome.value, quantidade.value)
+
+    nome.value = ""
+    quantidade.value = ""
 })
 
 function criaElemento(nome, quantidade) {
