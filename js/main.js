@@ -42,13 +42,34 @@ function criaElemento(item) {
 
     const numeroItem = document.createElement("strong")
     numeroItem.innerHTML = item.quantidade
-
+    numeroItem.dataset.id = item.id
     novoItem.appendChild(numeroItem)
     novoItem.innerHTML += item.nome
+   
+    novoItem.appendChild(botaoDeleta(item.id))
     
     lista.appendChild(novoItem)
 }
 
 function atualizaElemento(item) {
     document.querySelector("[data-id='"+item.id+"']").innerHTML = item.quantidade
+}
+
+function botaoDeleta(id) {
+    let elementoBotao = document.createElement("button")
+    elementoBotao.innerText = "X"
+
+    elementoBotao.addEventListener("click", function() {
+        deletaElemento(this.parentNode, id)
+    })
+
+    return elementoBotao
+}
+
+function deletaElemento(tag, id) {
+    tag.remove
+
+    itens.splice(itens.findIdex(elemento => elemento.id === id))
+
+    localStorage.setItem("itens", JSON.stringify(itens))
 }
